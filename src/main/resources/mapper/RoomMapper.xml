@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wmj.dao.RoomMapper" >
+  <resultMap id="BaseResultMap" type="com.wmj.entity.Room" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="roomName" property="roomname" jdbcType="VARCHAR" />
+    <result column="enid" property="enid" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="users" property="users" jdbcType="INTEGER" />
+    <result column="hasMedia" property="hasmedia" jdbcType="INTEGER" />
+    <result column="desc" property="desc" jdbcType="VARCHAR" />
+    <result column="comments" property="comments" jdbcType="VARCHAR" />
+    <result column="picsPath" property="picspath" jdbcType="VARCHAR" />
+    <result column="isuse" property="isuse" jdbcType="INTEGER" />
+    <result column="flag" property="flag" jdbcType="INTEGER" />
+    <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, roomName, enid, uid, address, users, hasMedia, desc, comments, picsPath, isuse, 
+    flag, createDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from room
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from room
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wmj.entity.Room" >
+    insert into room (id, roomName, enid, 
+      uid, address, users, 
+      hasMedia, desc, comments, 
+      picsPath, isuse, flag, 
+      createDate)
+    values (#{id,jdbcType=INTEGER}, #{roomname,jdbcType=VARCHAR}, #{enid,jdbcType=INTEGER}, 
+      #{uid,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, #{users,jdbcType=INTEGER}, 
+      #{hasmedia,jdbcType=INTEGER}, #{desc,jdbcType=VARCHAR}, #{comments,jdbcType=VARCHAR}, 
+      #{picspath,jdbcType=VARCHAR}, #{isuse,jdbcType=INTEGER}, #{flag,jdbcType=INTEGER}, 
+      #{createdate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wmj.entity.Room" >
+    insert into room
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="roomname != null" >
+        roomName,
+      </if>
+      <if test="enid != null" >
+        enid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="users != null" >
+        users,
+      </if>
+      <if test="hasmedia != null" >
+        hasMedia,
+      </if>
+      <if test="desc != null" >
+        desc,
+      </if>
+      <if test="comments != null" >
+        comments,
+      </if>
+      <if test="picspath != null" >
+        picsPath,
+      </if>
+      <if test="isuse != null" >
+        isuse,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="createdate != null" >
+        createDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roomname != null" >
+        #{roomname,jdbcType=VARCHAR},
+      </if>
+      <if test="enid != null" >
+        #{enid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="users != null" >
+        #{users,jdbcType=INTEGER},
+      </if>
+      <if test="hasmedia != null" >
+        #{hasmedia,jdbcType=INTEGER},
+      </if>
+      <if test="desc != null" >
+        #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="picspath != null" >
+        #{picspath,jdbcType=VARCHAR},
+      </if>
+      <if test="isuse != null" >
+        #{isuse,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wmj.entity.Room" >
+    update room
+    <set >
+      <if test="roomname != null" >
+        roomName = #{roomname,jdbcType=VARCHAR},
+      </if>
+      <if test="enid != null" >
+        enid = #{enid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="users != null" >
+        users = #{users,jdbcType=INTEGER},
+      </if>
+      <if test="hasmedia != null" >
+        hasMedia = #{hasmedia,jdbcType=INTEGER},
+      </if>
+      <if test="desc != null" >
+        desc = #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        comments = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="picspath != null" >
+        picsPath = #{picspath,jdbcType=VARCHAR},
+      </if>
+      <if test="isuse != null" >
+        isuse = #{isuse,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null" >
+        createDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wmj.entity.Room" >
+    update room
+    set roomName = #{roomname,jdbcType=VARCHAR},
+      enid = #{enid,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      users = #{users,jdbcType=INTEGER},
+      hasMedia = #{hasmedia,jdbcType=INTEGER},
+      desc = #{desc,jdbcType=VARCHAR},
+      comments = #{comments,jdbcType=VARCHAR},
+      picsPath = #{picspath,jdbcType=VARCHAR},
+      isuse = #{isuse,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=INTEGER},
+      createDate = #{createdate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
